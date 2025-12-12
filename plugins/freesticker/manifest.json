@@ -1,0 +1,22 @@
+{
+  "name": "Free Stickers",
+  "description": "Allows you to use Nitro stickers without Nitro.",
+  "authors": [
+    {
+      "name": "aliernfrog",
+      "id": "459370047652102154"
+    },
+    {
+      "name": "Cristiandis",
+      "id": "559776692240121866"
+    },
+    {
+      "name": "aaphid",
+      "id": "969779384691093575"
+    }
+  ],
+  "main": "src/index.ts",
+  "vendetta": {
+    "icon": "ic_sticker_24px"
+  }
+}
