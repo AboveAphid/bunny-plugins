@@ -6,6 +6,7 @@ import sendMessage from "./patches/sendMessage";
 // Default settings
 storage.emojiSize ??= 48;
 storage.hyperlink ??= true;
+storage.old_hyperlink ??= !storage.hyperlink; // Cannot be active/disabled while hyperlink is enabled
 storage.haveNitro ??= findByStoreName("UserStore").getCurrentUser()?.premiumType !== null;
 storage.forceMoji ??= false;
 

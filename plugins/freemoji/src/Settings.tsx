@@ -26,10 +26,24 @@ export default () => {
             <FormSection title="Settings" titleStyleType="no_border">
                 <FormSwitchRow
                     label="Hyperlink emoji"
-                    subLabel="Hyperlinks emoji link to be less distractive"
+                    subLabel="Hyperlinks emoji links hidden with invisible character!"
                     leading={<Forms.FormIcon source={getAssetIDByName("ic_link")} />}
                     value={storage.hyperlink}
-                    onValueChange={ () => {storage.hyperlink = !storage.hyperlink;}}
+                    onValueChange={ () => {
+                        storage.hyperlink = !storage.hyperlink;
+                        storage.old_hyperlink = !storage.hyperlink
+                    }}
+                    note=""
+                />
+                <FormSwitchRow
+                    label="Old Hyperlink emoji bleh gross yucky"
+                    subLabel="Hyperlinks emoji link to be less distractive"
+                    leading={<Forms.FormIcon source={getAssetIDByName("ic_link")} />}
+                    value={storage.old_hyperlink}
+                    onValueChange={ () => {
+                        storage.old_hyperlink = !storage.old_hyperlink;
+                        storage.hyperlink = !storage.old_hyperlink
+                    }}
                     note=""
                 />
                 <FormSwitchRow
