@@ -23,7 +23,7 @@ export default () => {
 
     return (
         <RN.ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 38 }}>
-            <FormSection title="Settings" titleStyleType="no_border">
+            <FormSection title="Settings">
                 <FormSwitchRow
                     label="Hyperlink emoji"
                     subLabel="Hyperlinks emoji link to be less distractive"
@@ -41,7 +41,7 @@ export default () => {
                     note=""
                 />
             </FormSection>
-            <FormSection title="Emoji Size" >
+            <FormSection title="Emoji Size">
                 {Object.entries(sizeOptions).map(([name, size]) => <FormRadioRow
                     label={name}
                     subLabel={size}
