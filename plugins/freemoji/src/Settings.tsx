@@ -17,7 +17,7 @@ const sizeOptions = {
 }
 
 const previewUri = "https://cdn.discordapp.com/emojis/926602689213767680.webp";
-
+// Useless comment cause I need to test if Build & Deploy workflow actual runs -.-
 export default () => {
     useProxy(storage);
 
