@@ -31,7 +31,10 @@ export default () => {
                     value={storage.hyperlink}
                     onValueChange={ () => {
                         storage.hyperlink = !storage.hyperlink;
-                        storage.old_hyperlink = !storage.hyperlink
+
+                        if (storage.hyperlink) {
+                            storage.old_hyperlink = false;
+                        }
                     }}
                     note=""
                 />
@@ -42,7 +45,10 @@ export default () => {
                     value={storage.old_hyperlink}
                     onValueChange={ () => {
                         storage.old_hyperlink = !storage.old_hyperlink;
-                        storage.hyperlink = !storage.old_hyperlink
+
+                        if (storage.old_hyperlink) {
+                            storage.hyperlink = false;
+                        }
                     }}
                     note=""
                 />
