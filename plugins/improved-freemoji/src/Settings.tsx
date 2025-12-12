@@ -23,7 +23,7 @@ export default () => {
 
     return (
         <RN.ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 38 }}>
-            <FormSection title="Settings">
+            <FormSection title="Settings" titleStyleType="no_border">
                 <FormSwitchRow
                     label="Hyperlink emoji"
                     subLabel="Hyperlinks emoji link to be less distractive"
