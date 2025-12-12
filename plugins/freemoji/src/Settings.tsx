@@ -25,34 +25,6 @@ export default () => {
         <RN.ScrollView style={{ flex: 1 }} contentContainerStyle={{ paddingBottom: 38 }}>
             <FormSection title="Settings" titleStyleType="no_border">
                 <FormSwitchRow
-                    label="Hyperlink emoji"
-                    subLabel="Hyperlinks emoji links hidden with invisible character!"
-                    leading={<Forms.FormIcon source={getAssetIDByName("ic_link")} />}
-                    value={storage.hyperlink}
-                    onValueChange={ () => {
-                        storage.hyperlink = !storage.hyperlink;
-
-                        if (storage.hyperlink) {
-                            storage.old_hyperlink = false;
-                        }
-                    }}
-                    note=""
-                />
-                <FormSwitchRow
-                    label="Old Hyperlink emoji bleh gross yucky"
-                    subLabel="Hyperlinks emoji link to be less distractive"
-                    leading={<Forms.FormIcon source={getAssetIDByName("ic_link")} />}
-                    value={storage.old_hyperlink}
-                    onValueChange={ () => {
-                        storage.old_hyperlink = !storage.old_hyperlink;
-
-                        if (storage.old_hyperlink) {
-                            storage.hyperlink = false;
-                        }
-                    }}
-                    note=""
-                />
-                <FormSwitchRow
                     label="Force Freemoji"
                     subLabel="Explicitly force Freemoji even if you have nitro (useful for testing)"
                     leading={<Forms.FormIcon source={getAssetIDByName("img_nitro_emojis")} />}
@@ -61,6 +33,30 @@ export default () => {
                     note=""
                 />
             </FormSection>
+            
+            <FormSection title="Hyperlink Emoji" titleStyleType="no_border">
+                <FormSwitchRow
+                    label="Active"
+                    subLabel="Improve the hyperlinks emoji links"
+                    leading={<Forms.FormIcon source={getAssetIDByName("ic_link")} />}
+                    value={storage.hyperlink}
+                    onValueChange={ () => {
+                        storage.hyperlink = !storage.hyperlink;
+                    }}
+                    note=""
+                />
+                <FormSwitchRow
+                    label="Use Old Method"
+                    subLabel="Converts hyperlinks to the emoji's name instead of invisible character."
+                    leading={<Forms.FormIcon source={getAssetIDByName("ic_link")} />}
+                    value={storage.use_old_hyperlink}
+                    onValueChange={ () => {
+                        storage.use_old_hyperlink = !storage.use_old_hyperlink;
+                    }}
+                    note=""
+                />
+            </FormSection>
+
             <FormSection title="Emoji Size">
                 {Object.entries(sizeOptions).map(([name, size]) => <FormRadioRow
                     label={name}
