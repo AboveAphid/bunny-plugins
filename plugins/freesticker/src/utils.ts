@@ -20,10 +20,41 @@ export function buildStickerURL(sticker) {
 		.replace("{size}", storage.stickerSize.toString());
 }
 
-export async function convertToGIF(stickerUrl : string) {
+export async function convertToGIF(stickerUrl) {
 	try {
-		var gif_sticker_url = stickerUrl.replace(".png", ".gif")
-		return gif_sticker_url
+		// Upload APNG and get its ID
+		let form = new FormData();
+		form.append("new-image-url", stickerUrl);
+		
+		const upload_res = await fetch(`https://ezgif.com/apng-to-gif`, {
+			method: "POST",
+			body: form
+		});
+
+		const file_id = upload_res.url.split("/").pop().replace(/\.html$/, '');
+		if (!file_id) {
+			throw new Error("Failed to retrieve GIF url.")
+		}
+
+		// Convert uploaded APNG to GIF
+		form = new FormData();
+		form.append("file", file_id);
+		form.append("size", storage.stickerSize.toString());
+
+		const conversion_res = await fetch(`https://ezgif.com/apng-to-gif/${file_id}.html?ajax=true`, {
+			method: "POST",
+			body: form
+		});
+	
+		const html_content = await conversion_res.text();
+
+		const gif_url = html_content.split('<img src="')[1].split('" style=')[0]
+		if (!gif_url) {
+			throw new Error("Failed to retrieve GIF url.")
+		}
+
+		return `https:${gif_url}`;
+	
 	} catch (e) {
 		logger.error(`Failed to convert ${stickerUrl} to GIF: `, e);
 		return null;
